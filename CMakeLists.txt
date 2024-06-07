@@ -11,9 +11,9 @@ set(CMAKE_CXX_STANDARD 17)
 set(INCLUDE_DIR "${CMAKE_SOURCE_DIR}/include")
 set(SRC_DIR "${CMAKE_SOURCE_DIR}/src")
 
-# 读取 include 文件夹中的所有文件并存储在变量 INCLUDE_FILES 中, src 文件夹中的所有文件储存在变量 SRC_FILES 中
-file(GLOB INCLUDE_FILES "${INCLUDE_DIR}/*")
-file(GLOB SRC_FILES "${SRC_DIR}/*")
+# 读取 include 文件夹中的所有头文件并存储在变量 INCLUDE_FILES 中, src 文件夹中的所有文件储存在变量 SRC_FILES 中
+file(GLOB INCLUDE_FILES "${INCLUDE_DIR}/*.hpp" "${INCLUDE_DIR}/*.h" "${INCLUDE_DIR}/*.cuh")
+file(GLOB SRC_FILES "${SRC_DIR}/*.cpp" "${SRC_DIR}/*.c" "${SRC_DIR}/*.cu")
 
 # 输出文件列表（可选）
 message(STATUS "include files: ${INCLUDE_FILES}")
