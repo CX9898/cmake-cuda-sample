@@ -2,12 +2,15 @@
 #include "head.hpp"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    float *A;
+    float *B;
 
-    float* A;
-    float* B;
+    A = (float *) malloc(MATRIX_SIZE * sizeof(float));
 
-    A = malloc(MATRIX_SIZE * )
+#pragma omp parallel for
+    for (int i = 0; i < 100; ++i) {
+        std::cout << i << std::endl;
+    }
 
     return 0;
 }
