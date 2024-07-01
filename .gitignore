@@ -1,5 +1,5 @@
-# 忽略所有 .idea文件夹
+# clion idea folder
 **/.idea/
 
-# 忽略所有构建的cmake-build文件夹
+# clion cmake-build folder
 **/cmake-build-*/
