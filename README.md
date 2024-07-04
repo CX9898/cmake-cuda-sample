@@ -11,7 +11,7 @@ This is an example of building a CUDA C++ project with CMake, you need to instal
 
 ### Linux
 
-The Linux examples are built using CMake.   To use CMake, change the current directory to the example directory you wish to build, create and go to the build folder, and run `cmake..` :
+The Linux examples are built using CMake.   To use CMake, change the current directory to the example directory you wish to build, create and go to the build folder, and run `cmake ..` and `make` :
 
 ```Shell
 $ cd <CMakeCudaDemo>
