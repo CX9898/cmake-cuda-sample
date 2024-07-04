@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.26)
 
 # 项目信息, 指定项目名为 Demo
-project(Demo)
+project(demo)
 
 # 添加构建项目时需要的语言
 enable_language(CXX)
