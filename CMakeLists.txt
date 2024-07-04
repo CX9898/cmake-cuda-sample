@@ -1,33 +1,33 @@
-# 指定cmake最低版本要求
+# Specify the minimum version of cmake
 cmake_minimum_required(VERSION 3.26)
 
-# 项目信息
+# Project Information
 project(cmake-cuda-demo)
 
-# 添加构建项目时需要的语言
+# Add languages needed when building the project
 enable_language(CXX)
 enable_language(CUDA)
 
-# 设置 C++ 版本
+# Set the C++ version
 set(CMAKE_CXX_STANDARD 11)
 
-# 设置 CUDA 架构类型(可选)
+# Set CUDA architecture type (optional)
 #set(CMAKE_CUDA_ARCHITECTURES 70)
 
-# 添加 include 文件夹路径到变量INCLUDE_DIR,添加 src 文件夹路径到变量 SRC_DIR
+# Add include folder path to INCLUDE_DIR and src folder path to SRC_DIR
 set(INCLUDE_DIR "${CMAKE_SOURCE_DIR}/include")
 set(SRC_DIR "${CMAKE_SOURCE_DIR}/src")
 
-# src 文件夹中的所有文件储存在变量 SRC_FILES 中
+# All files in src folder are stored in SRC_FILES variable
 file(GLOB SRC_FILES "${SRC_DIR}/*.cpp" "${SRC_DIR}/*.c" "${SRC_DIR}/*.cu")
 
-# 输出文件列表（可选）
+# Output file list information (optional)
 message(STATUS "Src files: ${SRC_FILES}")
 
-# 指定生成目标
+# Add generate target
 add_executable(${PROJECT_NAME} ${SRC_FILES})
 
-# 查找 CUDA 包
+# find CUDA package
 find_package(CUDAToolkit  REQUIRED)
 find_package(OpenMP REQUIRED)
 
@@ -35,7 +35,7 @@ find_package(OpenMP REQUIRED)
 #QUIET: 当设置为 QUIET 时，即使找不到包，CMake 也不会在控制台输出任何警告或错误信息。这通常用于可选依赖项。
 #MODULE: 这个参数告诉 CMake 查找的是 CMake 模块文件（.cmake 文件），而不是包配置文件
 
-# 添加 CUDA 的头文件目录(局部添加)
+# Add CUDA header directory (locally)
 target_include_directories(${PROJECT_NAME} PRIVATE ${CUDA_INCLUDE_DIRS})
 target_include_directories(${PROJECT_NAME} PRIVATE ${INCLUDE_DIR})
 
@@ -43,7 +43,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${INCLUDE_DIR})
 #PUBLIC：链接的库对目标自身和链接到该目标的所有其他目标都可见。
 #INTERFACE：链接的库仅对链接到该目标的其他目标可见。
 
-# 添加 CUDA 的头文件目录(全局添加)
+# Add CUDA header directory (globally)
 #include_directories(${CUDA_INCLUDE_DIRS})
 
 # Linked CUDA library
