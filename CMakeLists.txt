@@ -11,19 +11,17 @@ enable_language(CUDA)
 # 设置 C++ 版本
 set(CMAKE_CXX_STANDARD 11)
 
-# 设置 CUDA 架构类型
-#set(CMAKE_CUDA_ARCHITECTURES 86)
+# 设置 CUDA 架构类型(可选)
+#set(CMAKE_CUDA_ARCHITECTURES 70)
 
 # 添加 include 文件夹路径到变量INCLUDE_DIR,添加 src 文件夹路径到变量 SRC_DIR
 set(INCLUDE_DIR "${CMAKE_SOURCE_DIR}/include")
 set(SRC_DIR "${CMAKE_SOURCE_DIR}/src")
 
-# 读取 include 文件夹中的所有头文件并存储在变量 INCLUDE_FILES 中, src 文件夹中的所有文件储存在变量 SRC_FILES 中
-file(GLOB INCLUDE_FILES "${INCLUDE_DIR}/*.hpp" "${INCLUDE_DIR}/*.h" "${INCLUDE_DIR}/*.cuh")
+# src 文件夹中的所有文件储存在变量 SRC_FILES 中
 file(GLOB SRC_FILES "${SRC_DIR}/*.cpp" "${SRC_DIR}/*.c" "${SRC_DIR}/*.cu")
 
 # 输出文件列表（可选）
-message(STATUS "Include files: ${INCLUDE_FILES}")
 message(STATUS "Src files: ${SRC_FILES}")
 
 # 指定生成目标
@@ -49,14 +47,17 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${INCLUDE_DIR})
 # 添加 CUDA 的头文件目录(全局添加)
 #include_directories(${CUDA_INCLUDE_DIRS})
 
-# 链接 CUDA 库
+# Linked CUDA library
 target_link_libraries(${PROJECT_NAME} PRIVATE ${CUDA_CUDART_LIBRARY})
 
-# 链接 Thrust 库
+# Linked Thrust library
 #target_link_libraries(${PROJECT_NAME} PRIVATE ${Thrust_LIBRARIES})
 
-# 链接 cublas 库
-#target_link_libraries(cublasMatmul PRIVATE ${CUDA_cublas_LIBRARY})
+# Linked cublas library
+#target_link_libraries(${PROJECT_NAME} PRIVATE ${CUDA_cublas_LIBRARY})
 
-# 链接 openMP 库
+# Linked curand library
+#target_link_libraries(${PROJECT_NAME} PRIVATE ${CUDA_curand_LIBRARY})
+
+# Linked openMP library
 target_link_libraries(${PROJECT_NAME} PRIVATE OpenMP::OpenMP_CXX)
