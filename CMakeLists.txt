@@ -1,8 +1,8 @@
 # 指定cmake最低版本要求
 cmake_minimum_required(VERSION 3.26)
 
-# 项目信息, 指定项目名为 Demo
-project(demo)
+# 项目信息
+project(cmake-cuda-demo)
 
 # 添加构建项目时需要的语言
 enable_language(CXX)
