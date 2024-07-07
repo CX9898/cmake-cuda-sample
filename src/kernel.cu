@@ -1,11 +1,5 @@
-#include "head.hpp"
+#include "kernel.cuh"
 
-namespace kernel {
-    __global__ void matrixAdd(){
-
-    }
-}
-
-void matrixAdd() {
+__global__ void matrixAdd() {
 
 }

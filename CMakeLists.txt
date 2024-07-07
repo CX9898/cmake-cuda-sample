@@ -25,7 +25,8 @@ file(GLOB SRC_FILES "${SRC_DIR}/*.cpp" "${SRC_DIR}/*.cc" "${SRC_DIR}/*.cxx" "${S
 message(STATUS "Src files: ${SRC_FILES}")
 
 # Add generate target
-add_executable(${PROJECT_NAME} ${SRC_FILES})
+add_executable(${PROJECT_NAME} ${SRC_FILES}
+        include/kernel.cuh)
 
 # find CUDA package
 find_package(CUDAToolkit REQUIRED)
@@ -51,11 +52,14 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${INCLUDE_DIR})
 # Linked CUDA library
 target_link_libraries(${PROJECT_NAME} PRIVATE ${CUDA_CUDART_LIBRARY})
 
-# Linked Thrust library
-#target_link_libraries(${PROJECT_NAME} PRIVATE ${Thrust_LIBRARIES})
-
 # Linked cuBLAS library
 #target_link_libraries(${PROJECT_NAME} PRIVATE ${CUDA_cublas_LIBRARY})
+
+# Linked cuSPARSE library
+#target_link_libraries(${PROJECT_NAME} PRIVATE ${CUDA_cusparse_LIBRARY})
+
+# Linked CUDA OpenCL library
+#target_link_libraries(${PROJECT_NAME} PRIVATE ${CUDA_OpenCL_LIBRARY})
 
 # Linked cuRAND library
 #target_link_libraries(${PROJECT_NAME} PRIVATE ${CUDA_curand_LIBRARY})
