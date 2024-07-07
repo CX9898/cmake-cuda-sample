@@ -7,6 +7,17 @@ This is an example of building a CUDA C++ project with CMake, you need to instal
 - CMake
 - C/C++ compiler. Windows uses visual studio; Linux uses gcc/g++
 
+The include folder contains the headers, the src folder contains the source files, and the Common folder contains some common CUDA-friendly headers from NVIDIA's official cuda-samples.
+```
+.
+├─Common
+├─include
+│  ├─
+└─src
+│  ├─
+└─CMakeLists.txt
+```
+
 ## Build
 
 ### Linux

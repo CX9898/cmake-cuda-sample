@@ -18,6 +18,8 @@ set(CMAKE_CXX_STANDARD 11)
 set(INCLUDE_DIR "${CMAKE_SOURCE_DIR}/include")
 set(SRC_DIR "${CMAKE_SOURCE_DIR}/src")
 
+set(COMMON_DIR "${CMAKE_SOURCE_DIR}/Common")
+
 # All files in src folder are stored in SRC_FILES variable
 file(GLOB SRC_FILES "${SRC_DIR}/*.cpp" "${SRC_DIR}/*.cc" "${SRC_DIR}/*.cxx" "${SRC_DIR}/*.c" "${SRC_DIR}/*.cu")
 
@@ -40,7 +42,9 @@ find_package(OpenMP REQUIRED)
 
 # Add CUDA header directory (locally)
 target_include_directories(${PROJECT_NAME} PRIVATE ${CUDA_INCLUDE_DIRS})
+
 target_include_directories(${PROJECT_NAME} PRIVATE ${INCLUDE_DIR})
+target_include_directories(${PROJECT_NAME} PRIVATE ${COMMON_DIR})
 
 #PRIVATE: The linked library is only visible to the target itself.
 #PUBLIC: The linked library is visible to the target itself and to all other targets linked to the target.
