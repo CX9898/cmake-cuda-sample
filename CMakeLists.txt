@@ -20,8 +20,8 @@ set(SRC_DIR "${CMAKE_SOURCE_DIR}/src")
 
 set(COMMON_DIR "${CMAKE_SOURCE_DIR}/Common")
 
-# All files in src folder are stored in SRC_FILES variable
-file(GLOB SRC_FILES "${SRC_DIR}/*.cpp" "${SRC_DIR}/*.cc" "${SRC_DIR}/*.cxx" "${SRC_DIR}/*.c" "${SRC_DIR}/*.cu")
+# All source files in src folder are stored in SRC_FILES variable
+file(GLOB SRC_FILES "${SRC_DIR}/*.c" "${SRC_DIR}/*.cpp" "${SRC_DIR}/*.cc" "${SRC_DIR}/*.cxx" "${SRC_DIR}/*.cu")
 
 # Output file list information (optional)
 message(STATUS "Src files: ${SRC_FILES}")
@@ -35,11 +35,8 @@ set(CMAKE_INSTALL_PREFIX "${CMAKE_SOURCE_DIR}")
 # Set installation rules
 install(TARGETS ${PROJECT_NAME} DESTINATION bin)
 
-# find CUDA package
+# Find CUDA package
 find_package(CUDAToolkit REQUIRED)
-
-# find OpenMP package
-find_package(OpenMP REQUIRED)
 
 #REQUIRED: If the specified package is not found, CMake will throw an error and stop further configuration. This is a key parameter to ensure project dependency.
 #QUIET: When set to QUIET, CMake will not print any warnings or errors to the console even if the package is not found. This is typically used for optional dependencies.
@@ -76,5 +73,8 @@ target_link_libraries(${PROJECT_NAME} PRIVATE ${CUDA_CUDART_LIBRARY})
 # Linked cuRAND library
 #target_link_libraries(${PROJECT_NAME} PRIVATE ${CUDA_curand_LIBRARY})
 
+# Find OpenMP package
+#find_package(OpenMP REQUIRED)
+
 # Linked OpenMP library
-target_link_libraries(${PROJECT_NAME} PRIVATE OpenMP::OpenMP_CXX)
+#target_link_libraries(${PROJECT_NAME} PRIVATE OpenMP::OpenMP_CXX)
