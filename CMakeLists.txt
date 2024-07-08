@@ -30,6 +30,10 @@ message(STATUS "Src files: ${SRC_FILES}")
 add_executable(${PROJECT_NAME} ${SRC_FILES}
         include/kernel.cuh)
 
+install(TARGETS ${PROJECT_NAME}
+        CONFIGURATIONS Debug
+        RUNTIME DESTINATION Debug/bin)
+
 # find CUDA package
 find_package(CUDAToolkit REQUIRED)
 
@@ -59,11 +63,14 @@ target_link_libraries(${PROJECT_NAME} PRIVATE ${CUDA_CUDART_LIBRARY})
 # Linked cuBLAS library
 #target_link_libraries(${PROJECT_NAME} PRIVATE ${CUDA_cublas_LIBRARY})
 
+# Linked cuFFT library
+#target_link_libraries(${PROJECT_NAME} PRIVATE ${CUDA_cufft_LIBRARY})
+
+# Linked cuSOLVER library
+#target_link_libraries(${PROJECT_NAME} PRIVATE ${CUDA_cusolver_LIBRARY})
+
 # Linked cuSPARSE library
 #target_link_libraries(${PROJECT_NAME} PRIVATE ${CUDA_cusparse_LIBRARY})
-
-# Linked CUDA OpenCL library
-#target_link_libraries(${PROJECT_NAME} PRIVATE ${CUDA_OpenCL_LIBRARY})
 
 # Linked cuRAND library
 #target_link_libraries(${PROJECT_NAME} PRIVATE ${CUDA_curand_LIBRARY})
