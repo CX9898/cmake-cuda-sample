@@ -27,12 +27,13 @@ file(GLOB SRC_FILES "${SRC_DIR}/*.cpp" "${SRC_DIR}/*.cc" "${SRC_DIR}/*.cxx" "${S
 message(STATUS "Src files: ${SRC_FILES}")
 
 # Add generate target
-add_executable(${PROJECT_NAME} ${SRC_FILES}
-        include/kernel.cuh)
+add_executable(${PROJECT_NAME} ${SRC_FILES})
 
-install(TARGETS ${PROJECT_NAME}
-        CONFIGURATIONS Debug
-        RUNTIME DESTINATION Debug/bin)
+# Set the installation Path
+set(CMAKE_INSTALL_PREFIX "${CMAKE_SOURCE_DIR}")
+
+# Set installation rules
+install(TARGETS ${PROJECT_NAME} DESTINATION bin)
 
 # find CUDA package
 find_package(CUDAToolkit REQUIRED)
