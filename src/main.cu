@@ -29,7 +29,8 @@ int main() {
     float time;
     checkCudaErrors(cudaEventElapsedTime(&time, star, stop));
 
-    printf("time : %fms\n", time);
+    printf("VEC_SIZE : %d\n"
+           "vecAdd Function time : %fms\n", VEC_SIZE, time);
 
     checkCudaErrors(cudaEventDestroy(star));
     checkCudaErrors(cudaEventDestroy(stop));
