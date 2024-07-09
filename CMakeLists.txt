@@ -23,7 +23,7 @@ set(COMMON_DIR "${CMAKE_SOURCE_DIR}/Common")
 # All source files in src folder are stored in SRC_FILES variable
 file(GLOB SRC_FILES "${SRC_DIR}/*.c" "${SRC_DIR}/*.cpp" "${SRC_DIR}/*.cc" "${SRC_DIR}/*.cxx" "${SRC_DIR}/*.cu")
 
-# Output file list information (optional)
+# Output file list information
 message(STATUS "Src files: ${SRC_FILES}")
 
 # Add generate target
@@ -38,15 +38,15 @@ install(TARGETS ${PROJECT_NAME} DESTINATION bin)
 # Add CUDA header directory (locally)
 target_include_directories(${PROJECT_NAME} PRIVATE ${CUDA_INCLUDE_DIRS})
 
-target_include_directories(${PROJECT_NAME} PRIVATE ${INCLUDE_DIR})
-target_include_directories(${PROJECT_NAME} PRIVATE ${COMMON_DIR})
-
 #PRIVATE: The linked library is only visible to the target itself.
 #PUBLIC: The linked library is visible to the target itself and to all other targets linked to the target.
 #INTERFACE: Linked libraries are only visible to other targets linked to that target.
 
 # Add CUDA header directory (globally)
 #include_directories(${CUDA_INCLUDE_DIRS})
+
+target_include_directories(${PROJECT_NAME} PRIVATE ${INCLUDE_DIR})
+target_include_directories(${PROJECT_NAME} PRIVATE ${COMMON_DIR})
 
 # Linked CUDA library
 target_link_libraries(${PROJECT_NAME} PRIVATE ${CUDA_CUDART_LIBRARY})
