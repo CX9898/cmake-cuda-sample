@@ -35,13 +35,6 @@ set(CMAKE_INSTALL_PREFIX "${CMAKE_SOURCE_DIR}")
 # Set installation rules
 install(TARGETS ${PROJECT_NAME} DESTINATION bin)
 
-# Find CUDA package
-find_package(CUDAToolkit REQUIRED)
-
-#REQUIRED: If the specified package is not found, CMake will throw an error and stop further configuration. This is a key parameter to ensure project dependency.
-#QUIET: When set to QUIET, CMake will not print any warnings or errors to the console even if the package is not found. This is typically used for optional dependencies.
-#MODULE: This tells CMake to look for CMake module files (.cmake files) instead of package configuration files
-
 # Add CUDA header directory (locally)
 target_include_directories(${PROJECT_NAME} PRIVATE ${CUDA_INCLUDE_DIRS})
 
@@ -75,6 +68,10 @@ target_link_libraries(${PROJECT_NAME} PRIVATE ${CUDA_CUDART_LIBRARY})
 
 # Find OpenMP package
 #find_package(OpenMP REQUIRED)
+
+#REQUIRED: If the specified package is not found, CMake will throw an error and stop further configuration. This is a key parameter to ensure project dependency.
+#QUIET: When set to QUIET, CMake will not print any warnings or errors to the console even if the package is not found. This is typically used for optional dependencies.
+#MODULE: This tells CMake to look for CMake module files (.cmake files) instead of package configuration files
 
 # Linked OpenMP library
 #target_link_libraries(${PROJECT_NAME} PRIVATE OpenMP::OpenMP_CXX)
