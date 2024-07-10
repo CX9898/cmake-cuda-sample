@@ -1,4 +1,4 @@
-# Example of creating a CUDA C++ project using CMake
+# Example of using CMake to create a cross-platform CUDA c++ project
 
 ***
 
@@ -33,3 +33,6 @@ $ cd build
 $ cmake ..
 $ make
 ```
+
+***
+
