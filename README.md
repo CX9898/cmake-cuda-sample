@@ -27,7 +27,7 @@ The include folder contains the headers, the src folder contains the source file
 The Linux examples are built using CMake.   To use CMake, change the current directory to the example directory you wish to build, create and go to the build folder, and run `cmake ..` and `make` :
 
 ```Shell
-$ cd <CMakeCudaDemo>
+$ cd <cmake-cuda-sample>
 $ mkdir build
 $ cd build
 $ cmake ..
