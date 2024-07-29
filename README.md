@@ -36,4 +36,10 @@ $ make
 
 ***
 
+### Window
+
+The Window examples are built using CMake. Install the CMake Window version to build.
+
+***
+
 You can view the specific article: [ZhiHu/CX98](https://zhuanlan.zhihu.com/p/701581020) or [CX](https://cx9898.github.io/post/yong-%20CMake%20-gou-jian-kua-ping-tai-%20CUDA%20C-C%2B%2B%20-xiang-mu.html)
