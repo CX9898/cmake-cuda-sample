@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cuda_runtime.h>
+
 class cudaTimeCalculator {
  public:
   cudaTimeCalculator();

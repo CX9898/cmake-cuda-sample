@@ -1,6 +1,6 @@
 #include <cstdio>
 
-#include "cudaTimeCalculator.cuh"
+#include "cudaTimeCalculator.hpp"
 #include "kernel.cuh"
 #include "cudaErrorCheck.cuh"
 

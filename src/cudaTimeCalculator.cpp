@@ -1,4 +1,4 @@
-#include "cudaTimeCalculator.cuh"
+#include "cudaTimeCalculator.hpp"
 #include "cudaErrorCheck.cuh"
 
 cudaTimeCalculator::cudaTimeCalculator(){
