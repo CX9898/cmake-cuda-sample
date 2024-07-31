@@ -22,8 +22,6 @@ set(CMAKE_CUDA_STANDARD 11)
 set(INCLUDE_DIR "${CMAKE_SOURCE_DIR}/include")
 set(SRC_DIR "${CMAKE_SOURCE_DIR}/src")
 
-set(COMMON_DIR "${CMAKE_SOURCE_DIR}/Common")
-
 # All source files in src folder are stored in SRC_FILES variable
 file(GLOB SRC_FILES "${SRC_DIR}/*.c" "${SRC_DIR}/*.cpp" "${SRC_DIR}/*.cc" "${SRC_DIR}/*.cxx" "${SRC_DIR}/*.cu")
 
@@ -44,7 +42,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${INCLUDE_DIR})
 target_include_directories(${PROJECT_NAME} PRIVATE ${COMMON_DIR})
 
 # Linked cuda Runtime library
-#target_link_libraries(${PROJECT_NAME} PRIVATE CUDA::cudart)
+target_link_libraries(${PROJECT_NAME} PRIVATE CUDA::cudart)
 
 # Linked cuBLAS library
 #target_link_libraries(${PROJECT_NAME} PRIVATE CUDA::cublas)
