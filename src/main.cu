@@ -1,5 +1,6 @@
 #include <cstdio>
 
+#include "cudaTimeCalculator.cuh"
 #include "kernel.cuh"
 #include "cudaErrorCheck.cuh"
 
@@ -14,26 +15,17 @@ int main() {
     cudaErrCheck(cudaMalloc((void **) &vecB, VEC_SIZE * sizeof(float)));
     cudaErrCheck(cudaMalloc((void **) &vecC, VEC_SIZE * sizeof(float)));
 
-    cudaEvent_t star, stop;
-    cudaErrCheck(cudaEventCreate(&star));
-    cudaErrCheck(cudaEventCreate(&stop));
+    cudaTimeCalculator timeCalculator;
 
     const int numThreadPerBlocks = 1024;
     const int numBlocks = (VEC_SIZE + numThreadPerBlocks - 1) / numThreadPerBlocks;
 
-    cudaErrCheck(cudaEventRecord(star));
+    timeCalculator.startClock();
     vecAdd<float><<<numBlocks, numThreadPerBlocks>>>(VEC_SIZE, vecA, vecB, vecC);
-    cudaErrCheck(cudaEventRecord(stop));
-    cudaDeviceSynchronize();
-
-    float time;
-    cudaErrCheck(cudaEventElapsedTime(&time, star, stop));
+    timeCalculator.endClock();
 
     printf("VEC_SIZE : %d\n"
-           "vecAdd Function time : %fms\n", VEC_SIZE, time);
-
-    cudaErrCheck(cudaEventDestroy(star));
-    cudaErrCheck(cudaEventDestroy(stop));
+           "vecAdd Function time : %fms\n", VEC_SIZE, timeCalculator.getTime());
 
     cudaErrCheck(cudaFree(vecA));
     cudaErrCheck(cudaFree(vecB));
