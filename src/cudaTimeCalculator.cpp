@@ -2,27 +2,27 @@
 #include "cudaErrorCheck.cuh"
 
 cudaTimeCalculator::cudaTimeCalculator(){
-    time_ = 0.0f;
+    _time = 0.0f;
 
-    cudaErrCheck(cudaEventCreate(&star_));
-    cudaErrCheck(cudaEventCreate(&stop_));
+    cudaErrCheck(cudaEventCreate(&_star));
+    cudaErrCheck(cudaEventCreate(&_stop));
 }
 
 cudaTimeCalculator::~cudaTimeCalculator() {
-    cudaErrCheck(cudaEventDestroy(star_));
-    cudaErrCheck(cudaEventDestroy(stop_));
+    cudaErrCheck(cudaEventDestroy(_star));
+    cudaErrCheck(cudaEventDestroy(_stop));
 }
 
 void cudaTimeCalculator::startClock() {
-    cudaErrCheck(cudaEventRecord(star_));
+    cudaErrCheck(cudaEventRecord(_star));
 }
 
 void cudaTimeCalculator::endClock() {
-    cudaErrCheck(cudaEventRecord(stop_));
-    cudaErrCheck(cudaEventSynchronize(stop_));
+    cudaErrCheck(cudaEventRecord(_stop));
+    cudaErrCheck(cudaEventSynchronize(_stop));
 }
 
 float cudaTimeCalculator::getTime() {
-    cudaErrCheck(cudaEventElapsedTime(&time_, star_, stop_));
-    return time_;
+    cudaErrCheck(cudaEventElapsedTime(&_time, _star, _stop));
+    return _time;
 }

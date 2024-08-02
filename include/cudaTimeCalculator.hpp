@@ -12,9 +12,9 @@ class cudaTimeCalculator {
   float getTime();
 
  private:
-  cudaEvent_t star_;
-  cudaEvent_t stop_;
+  cudaEvent_t _star;
+  cudaEvent_t _stop;
 
-  float time_;
+  float _time;
 };
 
