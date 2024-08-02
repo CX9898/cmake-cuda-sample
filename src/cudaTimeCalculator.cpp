@@ -1,28 +1,28 @@
-#include "cudaTimeCalculator.hpp"
+#include "CudaTimeCalculator.hpp"
 #include "cudaErrorCheck.cuh"
 
-cudaTimeCalculator::cudaTimeCalculator(){
+CudaTimeCalculator::CudaTimeCalculator(){
     _time = 0.0f;
 
     cudaErrCheck(cudaEventCreate(&_star));
     cudaErrCheck(cudaEventCreate(&_stop));
 }
 
-cudaTimeCalculator::~cudaTimeCalculator() {
+CudaTimeCalculator::~CudaTimeCalculator() {
     cudaErrCheck(cudaEventDestroy(_star));
     cudaErrCheck(cudaEventDestroy(_stop));
 }
 
-void cudaTimeCalculator::startClock() {
+void CudaTimeCalculator::startClock() {
     cudaErrCheck(cudaEventRecord(_star));
 }
 
-void cudaTimeCalculator::endClock() {
+void CudaTimeCalculator::endClock() {
     cudaErrCheck(cudaEventRecord(_stop));
     cudaErrCheck(cudaEventSynchronize(_stop));
 }
 
-float cudaTimeCalculator::getTime() {
+float CudaTimeCalculator::getTime() {
     cudaErrCheck(cudaEventElapsedTime(&_time, _star, _stop));
     return _time;
 }

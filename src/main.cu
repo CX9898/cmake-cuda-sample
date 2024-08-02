@@ -1,6 +1,6 @@
 #include <cstdio>
 
-#include "cudaTimeCalculator.hpp"
+#include "CudaTimeCalculator.hpp"
 #include "kernel.cuh"
 #include "cudaErrorCheck.cuh"
 
@@ -15,7 +15,7 @@ int main() {
     cudaErrCheck(cudaMalloc((void **) &vecB, VEC_SIZE * sizeof(float)));
     cudaErrCheck(cudaMalloc((void **) &vecC, VEC_SIZE * sizeof(float)));
 
-    cudaTimeCalculator timeCalculator;
+    CudaTimeCalculator timeCalculator;
 
     const int numThreadPerBlocks = 1024;
     const int numBlocks = (VEC_SIZE + numThreadPerBlocks - 1) / numThreadPerBlocks;
