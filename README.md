@@ -1,4 +1,4 @@
-# Example of using CMake to create a cross-platform CUDA c++ project
+# Example of using CMake to create a cross-platform CUDA C++ project
 
 ***
 
